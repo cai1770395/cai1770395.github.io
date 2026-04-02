@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚拟素材库 - 付款秒发</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+        nav{background:#111;color:#fff;padding:15px 20px;position:fixed;width:100%;top:0;z-index:999}
+        .nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:22px;font-weight:bold;color:#07c160}
+        header{margin-top:60px;background:#f7f9fa;padding:60px 20px;text-align:center}
+        header h1{font-size:32px;margin-bottom:10px}
+        header p{font-size:16px;color:#555;max-width:700px;margin:auto}
+        .container{max-width:1100px;margin:50px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}
+        .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);overflow:hidden;transition:.3s}
+        .card:hover{transform:translateY(-5px)}
+        .card img{width:100%;height:200px;object-fit:cover}
+        .info{padding:20px}
+        .title{font-size:18px;margin-bottom:8px}
+        .price{font-size:22px;color:#e63946;font-weight:bold;margin:10px 0}
+        .desc{color:#666;margin-bottom:15px;line-height:1.5}
+        .buy{background:#07c160;color:#fff;border:none;border-radius:8px;padding:12px;width:100%;font-size:16px;cursor:pointer}
+        
+        /* 付款弹窗 */
+        .mask{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:9999;display:none}
+        .pay{background:#fff;width:90%;max-width:350px;margin:10% auto;padding:30px;border-radius:12px;text-align:center}
+        .pay img{width:280px;margin:15px 0;border-radius:8px}
+        .close{margin-top:15px;color:#666;cursor:pointer;padding:8px 20px;border:1px solid #ddd;border-radius:6px;background:#f5f5f5}
+        
+        /* 下单表单 */
+        .form{background:#f9f9f9;padding:50px 20px;text-align:center}
+        .form h2{margin-bottom:20px}
+        .form-box{max-width:500px;margin:auto}
+        .form input,.form textarea{width:100%;padding:12px;margin-bottom:12px;border:1px solid #ddd;border-radius:6px}
+        .submit{background:#111;color:#fff;padding:12px;border:none;border-radius:6px;width:100%;font-size:16px;cursor:pointer}
+        
+        footer{background:#111;color:#fff;text-align:center;padding:25px}
+    </style>
+</head>
+
+<body>
+
+<!-- 导航 -->
+<nav>
+    <div class="nav">
+        <div class="logo">精品素材库</div>
+        <div>虚拟商品 | 付款秒发</div>
+    </div>
+</nav>
+
+<!-- 头部 -->
+<header>
+    <h1>虚拟精品素材 · 0囤货 · 秒发货</h1>
+    <p>全部资料一键获取，无水印、可直接使用，付款后立即发送下载链接！</p>
+</header>
+
+<!-- 商品区 -->
+<div class="container">
+
+    <div class="card">
+        <img src="https://picsum.photos/600/400?random=1" alt="短视频素材">
+        <div class="info">
+            <h3 class="title">短视频爆款素材包</h3>
+            <div class="price">¥9.9</div>
+            <p class="desc">无水印视频+热门文案+网红音效，抖音快手必备</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/600/401?random=2" alt="PPT模板">
+        <div class="info">
+            <h3 class="title">500套高级PPT模板</h3>
+            <div class="price">¥9.9</div>
+            <p class="desc">工作总结、简历、汇报、商务全场景模板</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/600/402?random=3" alt="带货教程">
+        <div class="info">
+            <h3 class="title">短视频带货变现教程</h3>
+            <div class="price">¥19.9</div>
+            <p class="desc">起号、文案、剪辑、变现全套方法</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/600/403?random=4" alt="壁纸头像">
+        <div class="info">
+            <h3 class="title">高清壁纸头像大合集</h3>
+            <div class="price">¥9.9</div>
+            <p class="desc">4000+高清图，朋友圈、背景图、头像全套</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/600/404?random=5" alt="文案库">
+        <div class="info">
+            <h3 class="title">万能爆款文案库</h3>
+            <div class="price">¥14.9</div>
+            <p class="desc">短视频、朋友圈、带货、情感文案全有</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://picsum.photos/600/405?random=6" alt="学习资料">
+        <div class="info">
+            <h3 class="title">考试学习资料大全</h3>
+            <div class="price">¥19.9</div>
+            <p class="desc">题库、电子书、技能教程、各类学习资料</p>
+            <button class="buy" onclick="openPay()">立即购买</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- 付款弹窗（已嵌入你的微信收款码） -->
+<div id="payMask" class="mask">
+    <div class="pay">
+        <h3>微信扫码付款</h3>
+        <p>付款后发送截图领取对应商品资料</p>
+        <!-- 已替换为你提供的微信收款码 -->
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/" alt="微信收款码">
+        <button class="close" onclick="closePay()">关闭</button>
+    </div>
+</div>
+
+<!-- 下单表单 -->
+<section class="form">
+    <h2>付款后填写信息 · 立即发资料</h2>
+    <div class="form-box">
+        <input type="text" placeholder="你的微信/联系方式" required>
+        <input type="text" placeholder="购买的商品名称" required>
+        <textarea rows="3" placeholder="付款截图备注"></textarea>
+        <button class="submit">提交订单 → 立即领资料</button>
+    </div>
+</section>
+
+<!-- 底部 -->
+<footer>
+    <p>© 精品素材库 - 虚拟商品 付款秒发</p>
+</footer>
+
+<script>
+    function openPay(){document.getElementById("payMask").style.display="block"}
+    function closePay(){document.getElementById("payMask").style.display="none"}
+</script>
+
+</body>
+</html>
